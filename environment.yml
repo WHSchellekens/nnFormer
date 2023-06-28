@@ -67,7 +67,7 @@ dependencies:
     - sentencepiece==0.1.96
     - simpleitk==2.0.2
     - six==1.16.0
-    - sklearn==0.0
+    - scikit-learn==0.0
     - tensorboardx==2.3
     - threadpoolctl==2.1.0
     - tifffile==2020.9.3
