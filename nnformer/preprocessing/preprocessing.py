@@ -22,7 +22,7 @@ from batchgenerators.augmentations.utils import resize_segmentation
 from nnformer.configuration import default_num_threads, RESAMPLING_SEPARATE_Z_ANISO_THRESHOLD
 from nnformer.preprocessing.cropping import get_case_identifier_from_npz, ImageCropper
 from skimage.transform import resize
-from scipy.ndimage.interpolation import map_coordinates
+from scipy.ndimage import map_coordinates
 import numpy as np
 from batchgenerators.utilities.file_and_folder_operations import *
 from multiprocessing.pool import Pool
