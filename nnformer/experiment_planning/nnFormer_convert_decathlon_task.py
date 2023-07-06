@@ -17,9 +17,17 @@ from nnformer.experiment_planning.utils import split_4d
 from nnformer.utilities.file_endings import remove_trailing_slash
 
 
+
 def crawl_and_remove_hidden_from_decathlon(folder):
+    print(f'folder before: {folder}')
     folder = remove_trailing_slash(folder)
-    assert folder.split('/')[-1].startswith("Task"), "This does not seem to be a decathlon folder. Please give me a " \
+    print(f'folder after: {folder}')
+
+    boing = folder.split('\\')[-1]
+
+    print(f'boing after: {boing}')
+
+    assert folder.split('\\')[-1].startswith("Task"), "This does not seem to be a decathlon folder. Please give me a " \
                                                      "folder that starts with TaskXX and has the subfolders imagesTr, " \
                                                      "labelsTr and imagesTs"
     subf = subfolders(folder, join=False)
