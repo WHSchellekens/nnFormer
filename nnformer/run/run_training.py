@@ -13,7 +13,7 @@
 #    limitations under the License.
 
 import sys
-sys.path.append('D:/temp_Willem/nnFormer')
+sys.path.append(r'D:\temp_Willem\nnFormer')
 
 import argparse
 from batchgenerators.utilities.file_and_folder_operations import *

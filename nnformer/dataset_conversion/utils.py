@@ -5,7 +5,7 @@
 #    you may not use this file except in compliance with the License.
 #    You may obtain a copy of the License at
 #
-#        http://www.apache.org/licenses/LICENSE-2.0
+#        http:\\www.apache.org\licenses\LICENSE-2.0
 #
 #    Unless required by applicable law or agreed to in writing, software
 #    distributed under the License is distributed on an "AS IS" BASIS,
@@ -29,7 +29,7 @@ def generate_dataset_json(output_file: str, imagesTr_dir: str, imagesTs_dir: str
                           dataset_reference="", dataset_release='0.0'):
     """
     :param output_file: This needs to be the full path to the dataset.json you intend to write, so
-    output_file='DATASET_PATH/dataset.json' where the folder DATASET_PATH points to is the one with the
+    output_file='DATASET_PATH\dataset.json' where the folder DATASET_PATH points to is the one with the
     imagesTr and labelsTr subfolders
     :param imagesTr_dir: path to the imagesTr folder of that dataset
     :param imagesTs_dir: path to the imagesTs folder of that dataset. Can be None
@@ -64,10 +64,10 @@ def generate_dataset_json(output_file: str, imagesTr_dir: str, imagesTs_dir: str
     json_dict['numTraining'] = len(train_identifiers)
     json_dict['numTest'] = len(test_identifiers)
     json_dict['training'] = [
-        {'image': "./imagesTr/%s.nii.gz" % i, "label": "./labelsTr/%s.nii.gz" % i} for i
+        {'image': ".\imagesTr\%s.nii.gz" % i, "label": ".\labelsTr\%s.nii.gz" % i} for i
         in
         train_identifiers]
-    json_dict['test'] = ["./imagesTs/%s.nii.gz" % i for i in test_identifiers]
+    json_dict['test'] = [".\imagesTs\%s.nii.gz" % i for i in test_identifiers]
 
     if not output_file.endswith("dataset.json"):
         print("WARNING: output file name is not dataset.json! This may be intentional or not. You decide. "

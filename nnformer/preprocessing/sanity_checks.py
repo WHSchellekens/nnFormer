@@ -14,7 +14,7 @@
 
 
 from multiprocessing import Pool
-
+from typing import Union
 import SimpleITK as sitk
 import nibabel as nib
 import numpy as np
@@ -76,7 +76,7 @@ def verify_same_geometry(img_1: sitk.Image, img_2: sitk.Image):
         return False
 
 
-def verify_contains_only_expected_labels(itk_img: str, valid_labels: (tuple, list)):
+def verify_contains_only_expected_labels(itk_img: str, valid_labels: Union[tuple, list]):
     img_npy = sitk.GetArrayFromImage(sitk.ReadImage(itk_img))
     uniques = np.unique(img_npy)
     invalid_uniques = [i for i in uniques if i not in valid_labels]
@@ -105,8 +105,8 @@ def verify_dataset_integrity(folder):
     training_cases = dataset['training']
     num_modalities = len(dataset['modality'].keys())
     test_cases = dataset['test']
-    expected_train_identifiers = [i['image'].split("/")[-1][:-7] for i in training_cases] #image00?
-    expected_test_identifiers = [i.split("/")[-1][:-7] for i in test_cases]
+    expected_train_identifiers = [i['image'].split("\\")[-1][:-7] for i in training_cases] #image00?
+    expected_test_identifiers = [i.split("\\")[-1][:-7] for i in test_cases]
 
     ## check training set
     nii_files_in_imagesTr = subfiles((join(folder, "imagesTr")), suffix=".nii.gz", join=False)
@@ -248,7 +248,7 @@ if __name__ == "__main__":
 
     # load image
     gt_itk = sitk.ReadImage(
-        "/media/fabian/Results/nnFormer/3d_fullres/Task064_KiTS_labelsFixed/nnFormerTrainerV2__nnFormerPlansv2.1/gt_niftis/case_00085.nii.gz")
+        "\media\fabian\Results\nnFormer\3d_fullres\Task064_KiTS_labelsFixed\nnFormerTrainerV2__nnFormerPlansv2.1\gt_niftis\case_00085.nii.gz")
 
     # get numpy array
     pred_npy = sitk.GetArrayFromImage(gt_itk)
@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
     # load images in nib
     gt = nib.load(
-        "/media/fabian/Results/nnFormer/3d_fullres/Task064_KiTS_labelsFixed/nnFormerTrainerV2__nnFormerPlansv2.1/gt_niftis/case_00085.nii.gz")
+        "\media\fabian\Results\nnFormer\3d_fullres\Task064_KiTS_labelsFixed\nnFormerTrainerV2__nnFormerPlansv2.1\gt_niftis\case_00085.nii.gz")
     pred_nib = nib.load("test.mnc")
 
     new_img_sitk = sitk.ReadImage("test.mnc")

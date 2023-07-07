@@ -33,7 +33,7 @@ def process_label(label):
     return spleen,right_kidney,left_kidney,gallbladder,liver,stomach,aorta,pancreas
 
 def test(fold):
-    path='./'
+    path='.\\'
     label_list=sorted(glob.glob(os.path.join(path,'labelsTs','*nii.gz')))
     infer_list=sorted(glob.glob(os.path.join(path,'inferTs',fold,'*nii.gz')))
     print("loading success...")
@@ -57,14 +57,14 @@ def test(fold):
     hd_aorta=[]
     hd_pancreas=[]
     
-    file=path + 'inferTs/'+fold
+    file=path + 'inferTs\\'+fold
     if not os.path.exists(file):
         os.makedirs(file)
-    fw = open(file+'/dice_pre.txt', 'a')
+    fw = open(file+'\dice_pre.txt', 'a')
     
     for label_path,infer_path in zip(label_list,infer_list):
-        print(label_path.split('/')[-1])
-        print(infer_path.split('/')[-1])
+        print(label_path.split('\\')[-1])
+        print(infer_path.split('\\')[-1])
         label,infer = read_nii(label_path),read_nii(infer_path)
         label_spleen,label_right_kidney,label_left_kidney,label_gallbladder,label_liver,label_stomach,label_aorta,label_pancreas=process_label(label)
         infer_spleen,infer_right_kidney,infer_left_kidney,infer_gallbladder,infer_liver,infer_stomach,infer_aorta,infer_pancreas=process_label(infer)
@@ -88,7 +88,7 @@ def test(fold):
         hd_pancreas.append(hd(infer_pancreas,label_pancreas))
         
         fw.write('*'*20+'\n',)
-        fw.write(infer_path.split('/')[-1]+'\n')
+        fw.write(infer_path.split('\\')[-1]+'\n')
         fw.write('Dice_spleen: {:.4f}\n'.format(Dice_spleen[-1]))
         fw.write('Dice_right_kidney: {:.4f}\n'.format(Dice_right_kidney[-1]))
         fw.write('Dice_left_kidney: {:.4f}\n'.format(Dice_left_kidney[-1]))

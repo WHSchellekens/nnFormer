@@ -24,10 +24,10 @@ import pickle
 def get_configuration_from_output_folder(folder):
     # split off network_training_output_dir
     folder = folder[len(network_training_output_dir):]
-    if folder.startswith("/"):
+    if folder.startswith("\\"):
         folder = folder[1:]
 
-    configuration, task, trainer_and_plans_identifier = folder.split("/")
+    configuration, task, trainer_and_plans_identifier = folder.split("\\")
     trainer, plans_identifier = trainer_and_plans_identifier.split("__")
     return configuration, task, trainer, plans_identifier
 

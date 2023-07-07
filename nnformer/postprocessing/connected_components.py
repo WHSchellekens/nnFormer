@@ -422,7 +422,7 @@ def apply_postprocessing_to_folder(input_folder: str, output_folder: str, for_wh
 
 
 if __name__ == "__main__":
-    input_folder = "/media/fabian/DKFZ/predictions_Fabian/Liver_and_LiverTumor"
-    output_folder = "/media/fabian/DKFZ/predictions_Fabian/Liver_and_LiverTumor_postprocessed"
+    input_folder = "\media\fabian\DKFZ\predictions_Fabian\Liver_and_LiverTumor"
+    output_folder = "\media\fabian\DKFZ\predictions_Fabian\Liver_and_LiverTumor_postprocessed"
     for_which_classes = [(1, 2), ]
     apply_postprocessing_to_folder(input_folder, output_folder, for_which_classes)

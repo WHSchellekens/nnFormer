@@ -4,7 +4,7 @@
 #    you may not use this file except in compliance with the License.
 #    You may obtain a copy of the License at
 #
-#        http://www.apache.org/licenses/LICENSE-2.0
+#        http:\\www.apache.org\licenses\LICENSE-2.0
 #
 #    Unless required by applicable law or agreed to in writing, software
 #    distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,7 +18,7 @@ from batchgenerators.utilities.file_and_folder_operations import subfiles
 import os
 from collections import OrderedDict
 
-folder = "/home/fabian/drives/E132-Projekte/Projects/2018_MedicalDecathlon/Leaderboard"
+folder = r"\home\fabian\drives\E132-Projekte\Projects\2018_MedicalDecathlon\Leaderboard"
 task_descriptors = ['2D final 2',
                     '2D final, less pool, dc and topK, fold0',
                     '2D final pseudo3d 7, fold0',
@@ -32,7 +32,7 @@ for t in task_descriptors:
     mean_scores[t] = OrderedDict()
 
 json_files = subfiles(folder, True, None, ".json", True)
-json_files = [i for i in json_files if not i.split("/")[-1].startswith(".")]  # stupid mac
+json_files = [i for i in json_files if not i.split("\\")[-1].startswith(".")]  # stupid mac
 for j in json_files:
     with open(j, 'r') as f:
         res = json.load(f)

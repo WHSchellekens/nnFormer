@@ -58,7 +58,7 @@ def hd(pred,gt):
 
 
 def test(fold):
-    path='./'
+    path='.\\'
     label_list=sorted(glob.glob(os.path.join(path,'labelsTs','*nii.gz')))
     infer_list=sorted(glob.glob(os.path.join(path,'inferTs',fold,'*nii.gz')))
     print("loading success...")
@@ -72,14 +72,14 @@ def test(fold):
     hd_myo=[]
     hd_lv=[]
     
-    file=path + 'inferTs/'+fold
+    file=path + 'inferTs\\'+fold
     if not os.path.exists(file):
         os.makedirs(file)
-    fw = open(file+'/dice_pre.txt', 'w')
+    fw = open(file+'\dice_pre.txt', 'w')
     
     for label_path,infer_path in zip(label_list,infer_list):
-        print(label_path.split('/')[-1])
-        print(infer_path.split('/')[-1])
+        print(label_path.split('\\')[-1])
+        print(infer_path.split('\\')[-1])
         label,spacing= read_nii(label_path)
         infer,spacing= read_nii(infer_path)
         label_rv,label_myo,label_lv=process_label(label)
@@ -94,13 +94,13 @@ def test(fold):
         hd_lv.append(hd(infer_lv,label_lv))
         
         fw.write('*'*20+'\n',)
-        fw.write(infer_path.split('/')[-1]+'\n')
+        fw.write(infer_path.split('\\')[-1]+'\n')
         fw.write('hd_rv: {:.4f}\n'.format(hd_rv[-1]))
         fw.write('hd_myo: {:.4f}\n'.format(hd_myo[-1]))
         fw.write('hd_lv: {:.4f}\n'.format(hd_lv[-1]))
         #fw.write('*'*20+'\n')
         fw.write('*'*20+'\n',)
-        fw.write(infer_path.split('/')[-1]+'\n')
+        fw.write(infer_path.split('\\')[-1]+'\n')
         fw.write('Dice_rv: {:.4f}\n'.format(Dice_rv[-1]))
         fw.write('Dice_myo: {:.4f}\n'.format(Dice_myo[-1]))
         fw.write('Dice_lv: {:.4f}\n'.format(Dice_lv[-1]))

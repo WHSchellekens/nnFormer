@@ -111,5 +111,5 @@ def evaluate_regions(folder_predicted: str, folder_gt: str, regions: dict, proce
 
 
 if __name__ == '__main__':
-    collect_cv_niftis('./', './cv_niftis')
-    evaluate_regions('./cv_niftis/', './gt_niftis/', get_brats_regions())
+    collect_cv_niftis('.\\', '.\cv_niftis')
+    evaluate_regions(r'.\cv_niftis\\', r'.\gt_niftis\\', get_brats_regions())

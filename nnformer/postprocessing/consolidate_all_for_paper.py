@@ -54,7 +54,7 @@ def get_commands(configurations, regular_trainer="nnFormerTrainerV2", cascade_tr
             else:
                 trainer = regular_trainer
 
-            folder = get_output_folder_name(m, task, trainer, plans, overwrite_training_output_dir="/datasets/datasets_fabian/results/nnFormer")
+            folder = get_output_folder_name(m, task, trainer, plans, overwrite_training_output_dir="\datasets\datasets_fabian\results\nnFormer")
             node = node_pool[ctr % len(node_pool)]
             print("bsub -m %s -q gputest -L /bin/bash \"source ~/.bashrc && python postprocessing/"
                   "consolidate_postprocessing.py -f" % node, folder, "\"")

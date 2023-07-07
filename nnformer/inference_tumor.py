@@ -37,7 +37,7 @@ def process_label(label):
     return ET,TC,WT
 
 def test(fold):
-    path='./'
+    path='.\\'
     label_list=sorted(glob.glob(os.path.join(path,'labelsTs','*nii.gz')))
     infer_list=sorted(glob.glob(os.path.join(path,'inferTs',fold,'*nii.gz')))
     print("loading success...")
@@ -48,12 +48,12 @@ def test(fold):
     HD_et=[]
     HD_tc=[]
     HD_wt=[]
-    file=path + 'inferTs/'+fold
-    fw = open(file+'/dice_pre.txt', 'w')
+    file=path + 'inferTs\\'+fold
+    fw = open(file+'\dice_pre.txt', 'w')
 
     for label_path,infer_path in zip(label_list,infer_list):
-        print(label_path.split('/')[-1])
-        print(infer_path.split('/')[-1])
+        print(label_path.split('\\')[-1])
+        print(infer_path.split('\\')[-1])
         label,infer = read_nii(label_path),read_nii(infer_path)
         label_et,label_tc,label_wt=process_label(label)
         infer_et,infer_tc,infer_wt=process_label(infer)
@@ -66,7 +66,7 @@ def test(fold):
         HD_wt.append(hd(infer_wt,label_wt))
         
         fw.write('*'*20+'\n',)
-        fw.write(infer_path.split('/')[-1]+'\n')
+        fw.write(infer_path.split('\\')[-1]+'\n')
         fw.write('hd_et: {:.4f}\n'.format(HD_et[-1]))
         fw.write('hd_tc: {:.4f}\n'.format(HD_tc[-1]))
         fw.write('hd_wt: {:.4f}\n'.format(HD_wt[-1]))
