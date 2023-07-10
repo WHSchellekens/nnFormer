@@ -23,13 +23,11 @@ def crawl_and_remove_hidden_from_decathlon(folder):
     folder = remove_trailing_slash(folder)
     print(f'folder after: {folder}')
 
-    boing = folder.split('\\')[-1]
-
-    print(f'boing after: {boing}')
-
     assert folder.split('\\')[-1].startswith("Task"), "This does not seem to be a decathlon folder. Please give me a " \
                                                      "folder that starts with TaskXX and has the subfolders imagesTr, " \
                                                      "labelsTr and imagesTs"
+    print("De ontzettende folder is: " + folder)
+    print("print hij uberhaupt iets?")
     subf = subfolders(folder, join=False)
     assert 'imagesTr' in subf, "This does not seem to be a decathlon folder. Please give me a " \
                                                      "folder that starts with TaskXX and has the subfolders imagesTr, " \

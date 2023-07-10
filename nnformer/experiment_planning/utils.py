@@ -38,6 +38,7 @@ def split_4d(input_folder, num_processes=default_num_threads, overwrite_task_out
         input_folder = input_folder[:-1]
 
     full_task_name = input_folder.split("\\")[-1]
+    print(str(full_task_name) + ", the full task name, is of type " + str(type(input_folder)))
 
     assert full_task_name.startswith("Task"), "The input folder must point to a folder that starts with TaskXX_"
 
@@ -49,9 +50,12 @@ def split_4d(input_folder, num_processes=default_num_threads, overwrite_task_out
         overwrite_task_output_id = input_task_id
 
     task_name = full_task_name[7:]
-
-    output_folder = join(nnFormer_raw_data, "Task%03.0d_" % overwrite_task_output_id + task_name)
-
+    print("task_name: " + task_name)
+    print("nnFormer_raw_data: " + str(nnFormer_raw_data) + " hoofdpijn:")
+    print("Task%02.0d_" % overwrite_task_output_id)
+    # print("nubreektmijnklomp:" + os.path.join(nnFormer_raw_data, "Task%02.0d_" % overwrite_task_output_id + task_name))
+    # output_folder = os.path.join(str(nnFormer_raw_data), "Task%02.0d_" % overwrite_task_output_id + str(task_name))
+    output_folder = r"D:\temp_Willem\nnFormer\DATASET\nnFormer_raw\nnFormer_raw_data\Task02_Synapse"
     if isdir(output_folder):
         shutil.rmtree(output_folder)
 
@@ -77,6 +81,7 @@ def split_4d(input_folder, num_processes=default_num_threads, overwrite_task_out
     p.close()
     p.join()
     shutil.copy(join(input_folder, "dataset.json"), output_folder)
+    print("meer hoofdpijn: " + output_folder)
 
 
 def create_lists_from_splitted_dataset(base_folder_splitted):

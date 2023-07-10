@@ -31,8 +31,10 @@ preprocessing_output_dir = os.environ['nnFormer_preprocessed'] if "nnFormer_prep
 network_training_output_dir_base = os.path.join(os.environ['RESULTS_FOLDER']) if "RESULTS_FOLDER" in os.environ.keys() else None
 
 if base is not None:
-    nnFormer_raw_data = join(base, "nnFormer_raw_data")
-    nnFormer_cropped_data = join(base, "nnFormer_cropped_data")
+    # nnFormer_raw_data = join(base, "nnFormer_raw_data")
+    # nnFormer_cropped_data = join(base, "nnFormer_cropped_data")
+    nnFormer_raw_data = r"D:\temp_Willem\nnFormer\DATASET\nnFormer_raw\nnFormer_raw_data"
+    nnFormer_cropped_data = r"D:\temp_Willem\nnFormer\DATASET\nnFormer_raw\nnFormer_cropped_data"
     maybe_mkdir_p(nnFormer_raw_data)
     maybe_mkdir_p(nnFormer_cropped_data)
 else:
